@@ -1,10 +1,10 @@
-package com.rushcode.springboot.security;
+package com.luv2code.springboot.cruddemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SecurityApplicationTests {
+class CruddemoApplicationTests {
 
 	@Test
 	void contextLoads() {
