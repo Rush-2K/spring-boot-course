@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.rushcode.cruddemo.dao.AppDAO;
+import com.rushcode.cruddemo.entity.Instructor;
+
 @SpringBootApplication
 public class CruddemoApplication {
 
@@ -13,11 +16,17 @@ public class CruddemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args) {
+	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 
 		return runner -> {
-			System.out.println("Hello World");
+			createInstructor(appDAO);
 		};
+	}
+
+	private void createInstructor(AppDAO appDAO) {
+
+		// create the instructor
+		Instructor tempInstructor = new Instructor(first)
 	}
 
 }
