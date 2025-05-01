@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,7 +51,7 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-    @OneToMany(mappedBy = "instructor", cascade = {
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH })
     private List<Course> courses;
@@ -129,6 +130,9 @@ public class Instructor {
 
         courses.add(tempCourse);
 
+        // tells the instructor that it is this current Instructor object
+        // to set bi-directional link
+        // the course knows which instructor it belongs to
         tempCourse.setInstructor(this);
     }
 

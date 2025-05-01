@@ -42,6 +42,9 @@ public class Course {
         this.title = title;
     }
 
+    public Course() {
+    }
+
     public int getId() {
         return id;
     }
