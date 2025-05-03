@@ -22,19 +22,19 @@
         Role(s): <span sec:authentication="principal.authorities"></span>
     </p>
 
-    <hr>
+    <div sec:authorize="hasRole('MANAGER')">
+        <!-- Add a link to point/leaders.. for managers -->
+        <p>
+            <a th:href="@{/leaders}">Leadership Meeting</a>
+        </p>
+    </div>
 
-    <!-- Add a link to point/leaders.. for managers -->
-    <p>
-        <a th:href="@{/leaders}">Leadership Meeting</a>
-    </p>
-
-    <hr>
-
-    <!-- Add a link to point/systems.. for admin -->
-    <p>
-        <a th:href="@{/systems}">System</a>
-    </p>
+    <div sec:authorize="hasRole('ADMIN')">
+        <!-- Add a link to point/systems.. for admin -->
+        <p>
+            <a th:href="@{/systems}">System</a>
+        </p>
+    </div>
 
     <hr>
 
