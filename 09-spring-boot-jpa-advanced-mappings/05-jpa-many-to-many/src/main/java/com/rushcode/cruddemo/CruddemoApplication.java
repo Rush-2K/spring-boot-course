@@ -26,8 +26,58 @@ public class CruddemoApplication {
 
 			// findCourseAndStudents(appDAO);
 
-			findStudentsAndCourse(appDAO);
+			// findStudentsAndCourse(appDAO);
+
+			// addMoreCoursesForStudent(appDAO);
+
+			// only delete course, not student
+			// deleteCourse(appDAO);
+
+			deleteStudent(appDAO);
+
 		};
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+
+		int theId = 2;
+		System.out.println("Deleting student id: " + theId);
+
+		appDAO.deleteStudentById(theId);
+
+		System.out.println("Done!");
+	}
+
+	private void deleteCourse(AppDAO appDAO) {
+
+		int theId = 10;
+
+		System.out.println("deleting course id: " + theId);
+
+		appDAO.deleteCourseById(theId);
+
+		System.out.println("Done");
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+
+		int theId = 2;
+		Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+
+		// create more courses
+		Course tempCourse1 = new Course("Rubick's Cube - How to Speed Cube");
+		Course tempCourse2 = new Course("How to Launder Money");
+
+		// add courses to student
+		tempStudent.addCourse(tempCourse1);
+		tempStudent.addCourse(tempCourse2);
+
+		System.out.println("Update student: " + tempStudent);
+		System.out.println("Associated course: " + tempStudent.getCourse());
+
+		appDAO.update(tempStudent);
+
+		System.out.println("Done update");
 	}
 
 	private void findStudentsAndCourse(AppDAO appDAO) {
